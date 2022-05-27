@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
 export const Tour = ({name, id, info, image, price}) => {
+
+    const [toggleInfo, setToggleInfo] = useState(false);
 
     return (
         <div className="single-tour">
@@ -10,7 +12,9 @@ export const Tour = ({name, id, info, image, price}) => {
                     <h4>{name}</h4>
                     <h4 className="tour-price">${price}</h4>
                 </div>
-                <p>{info}</p>
+                <div>{!toggleInfo ? info.slice(0, info.length/2) : info}
+                    <button onClick={() => setToggleInfo(!toggleInfo)}>{toggleInfo ? "show less": "...show more"}</button>
+                </div>
                 <button className="delete-btn">not interested</button>
             </footer>
             
