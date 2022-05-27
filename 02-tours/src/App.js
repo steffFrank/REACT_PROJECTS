@@ -8,7 +8,13 @@ export const App = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const FetchData = async (url) => {
+  const deleteTour = (id) => {
+    setData(prevData => {
+      return prevData.filter(tour => tour.id !== id);
+    })
+  }
+
+  const fetchData = async (url) => {
     const response = await fetch(url);
     const fetchedData = await response.json();
     setData(fetchedData);
@@ -16,12 +22,14 @@ export const App = () => {
   }
 
   useEffect(() => {
-    FetchData(url);
+    fetchData(url);
   }, [])
   return (
-    <section>
+    <div className="section">
       <Tours isLoading={isLoading}
-             data={data}/>
-    </section>
+             data={data}
+             deleteTour={deleteTour} />
+      {data.length === 0 && <button onClick={() => fetchData(url)} className="btn">load data</button>}
+    </div>
   )
 }

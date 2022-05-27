@@ -146,6 +146,13 @@ p {
   margin-top: 2rem;
   font-size: 1.2rem;
 }
+
+.section .btn {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+}
+
 /*
 =============== 
 Tours

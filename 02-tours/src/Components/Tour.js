@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export const Tour = ({name, id, info, image, price}) => {
+export const Tour = ({name, info, image, price, deleteTour}) => {
 
     const [toggleInfo, setToggleInfo] = useState(false);
 
@@ -15,7 +15,7 @@ export const Tour = ({name, id, info, image, price}) => {
                 <div>{!toggleInfo ? info.slice(0, info.length/2) : info}
                     <button onClick={() => setToggleInfo(!toggleInfo)}>{toggleInfo ? "show less": "...show more"}</button>
                 </div>
-                <button className="delete-btn">not interested</button>
+                <button onClick={deleteTour} className="delete-btn">not interested</button>
             </footer>
             
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Tour } from "./Tour";
 
-export const Tours = ({isLoading, data}) => {
+export const Tours = ({isLoading, data, deleteTour}) => {
     return (
         <main>
             {isLoading ? <h1 className="loading">Loading...</h1> : 
@@ -11,7 +11,8 @@ export const Tours = ({isLoading, data}) => {
             </div>}
             {data.map(tour => {
                 return <Tour key={tour.id}
-                             {...tour} />
+                             {...tour} 
+                             deleteTour={() => deleteTour(tour.id)} />
             })}
             
         </main>
