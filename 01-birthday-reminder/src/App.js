@@ -14,7 +14,10 @@ export const App = () => {
     <main>
       <div className="container">
         <h3>{people.length} birthdays today</h3>
-        <List />
+        {people.map((person) => <List key={person.id}
+                                      img={person.image}
+                                      name={person.name}
+                                      age={person.age} />)}
         <button onClick={handleClick} className="btn">clear all</button>
       </div>
       
