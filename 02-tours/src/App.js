@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Tours from "./Components/Tours";
+import { Tours } from "./Components/Tours";
 
 export const App = () => {
 
@@ -20,7 +20,8 @@ export const App = () => {
   }, [])
   return (
     <section>
-      <Tours />
+      <Tours isLoading={isLoading}
+             data={data}/>
     </section>
   )
 }
