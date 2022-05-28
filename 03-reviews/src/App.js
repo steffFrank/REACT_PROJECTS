@@ -2,7 +2,17 @@ import React from 'react';
 import { Review } from './Review';
 
 export const App = ()  => {
-  return <h2>reviews project setup</h2>;
+  return (
+    <main>
+      <div className='title'>
+        <h2>our reviews</h2>
+        <div className='underline'></div>   
+      </div>
+      <div className='container'>
+        <Review />
+      </div>
+    </main>
+  )
 }
 
 
