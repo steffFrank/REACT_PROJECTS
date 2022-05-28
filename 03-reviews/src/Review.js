@@ -1,10 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import people from './data';
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 
 export const Review = () => {
+  const [index, setIndex] = useState(0);
+  const person = people[index];
+  
+  const checkIndex = (ind) => {
+    if (ind > people.length - 1) {
+      return 0;
+    } else if (ind < 0) {
+      return people.length -1;
+    } else {
+      return ind;
+    }
+  }
 
-  const [person, setPerson] = useState(people[0]);
+  const prevReview = () => {
+    setIndex(prevIndex => checkIndex(prevIndex - 1))
+  }
+
+  const nextReview = () => {
+    setIndex(prevIndex => checkIndex(prevIndex + 1))
+  }
+
+  const randomReview = () => {
+    let randomIndex = Math.floor(Math.random() * people.length);
+    if (randomIndex === index) {
+      randomIndex = checkIndex(randomIndex + 1);
+    }
+    setIndex(randomIndex);
+  }
+  
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      randomReview();
+    },3000)
+    return ()=> clearTimeout(timeout);
+  })
 
   return (
     <div className='review'>
@@ -18,10 +51,10 @@ export const Review = () => {
       <p className='job'>{person.job}</p>
       <p className='info'>{person.text}</p>
       <div>
-        <button className='prev-btn'><FaChevronLeft /></button>
-        <button className='next-btn'><FaChevronRight /></button>
+        <button onClick={prevReview} className='prev-btn'><FaChevronLeft /></button>
+        <button onClick={nextReview} className='next-btn'><FaChevronRight /></button>
       </div>
-      <button className='random-btn'>surprise me</button>
+      <button onClick={randomReview} className='random-btn'>surprise me</button>
     </div>
   );
 };
