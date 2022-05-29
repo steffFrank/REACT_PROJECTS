@@ -9,10 +9,10 @@ export const App = () =>  {
 
   const [menus, setMenus] = useState(items);
   
-  const categories = [...new Set(items.map(menu => {
+  const categories = ["all", ...new Set(items.map(menu => {
     return menu.category
   }))]
-  categories.unshift("all"); // Add 'all' category in the list 
+  
 
   const filterMenuByCategory = (category) => {
     const result = items.filter(menu => {
@@ -22,6 +22,7 @@ export const App = () =>  {
       return menu.category === category});
     setMenus(result);
   }
+
   return (
     <main className="menu">
       <div className="title">
