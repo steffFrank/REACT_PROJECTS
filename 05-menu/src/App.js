@@ -20,7 +20,7 @@ export const App = () =>  {
       <section className="section-center">
         {menus.map(menu => {
           return (
-            <Menu {...menu} />
+            <Menu key={menu.id} {...menu} />
           )
         })}
       </section>
