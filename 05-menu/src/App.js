@@ -9,19 +9,27 @@ export const App = () =>  {
 
   const [menus, setMenus] = useState(items);
   
-  const categories = [...new Set(menus.map(menu => {
+  const categories = [...new Set(items.map(menu => {
     return menu.category
   }))]
-  categories.unshift("all");
+  categories.unshift("all"); // Add 'all' category in the list 
 
-
+  const filterMenuByCategory = (category) => {
+    const result = items.filter(menu => {
+      if (category === "all") {
+        return items;
+      }
+      return menu.category === category});
+    setMenus(result);
+  }
   return (
     <main className="menu">
       <div className="title">
         <h2>our menu</h2>
         <div className="underline"></div>
       </div>
-      <Categories categories={categories}/>
+      <Categories categories={categories}
+                  filterMenuByCategory={filterMenuByCategory}/>
       <section className="section-center">
         {menus.map(menu => {
           return (
