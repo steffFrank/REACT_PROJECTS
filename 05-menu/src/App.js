@@ -8,6 +8,11 @@ import items from "./data";
 export const App = () =>  {
 
   const [menus, setMenus] = useState(items);
+  
+  const categories = [...new Set(menus.map(menu => {
+    return menu.category
+  }))]
+  categories.unshift("all");
 
 
   return (
@@ -16,7 +21,7 @@ export const App = () =>  {
         <h2>our menu</h2>
         <div className="underline"></div>
       </div>
-      <Categories />
+      <Categories categories={categories}/>
       <section className="section-center">
         {menus.map(menu => {
           return (
