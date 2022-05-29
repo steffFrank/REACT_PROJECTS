@@ -15,11 +15,11 @@ export const App = () =>  {
   
 
   const filterMenuByCategory = (category) => {
-    const result = items.filter(menu => {
-      if (category === "all") {
-        return items;
-      }
-      return menu.category === category});
+    if (category === "all") {
+      setMenus(items);
+      return;
+    }
+    const result = items.filter(menu => menu.category === category);
     setMenus(result);
   }
 
