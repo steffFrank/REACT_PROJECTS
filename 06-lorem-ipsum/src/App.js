@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import data from './data';
-function App() {
+import React, { useState } from "react";
+import data from "./data";
+import {Form} from "./Form";
+
+export const App = () => {
   
-  
+  const maxLength = data.length;
   return (
-  <h2>lorem ipsum project setup</h2>
+    <section className="section-center">
+      <h3>tired of boring lorem ipsum?</h3>
+      <Form maxLength={maxLength}/>
+    </section>
     )
 }
-
-export default App;
