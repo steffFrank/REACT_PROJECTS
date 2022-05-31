@@ -3,3 +3,4 @@
 - 02-Tours
 - 03-reviews
 - 04-menu
+- 05-slider
