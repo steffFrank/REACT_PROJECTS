@@ -23,6 +23,12 @@ export const App = () => {
     setValue("");
   }
 
+  const deleteItem = (id) => {
+    setItems(prevItems => {
+      return prevItems.filter(item => item.id !== id);
+    })
+  }
+
   const clearItems = () => {
     setItems([]);
   }
@@ -36,7 +42,8 @@ export const App = () => {
               handleChange={handleChange}
               value={value}/>
         <List items={items}
-              clearItems={clearItems}/>
+              clearItems={clearItems}
+              deleteItem={deleteItem}/>
       </div>
      
     </div>
