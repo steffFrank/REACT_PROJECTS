@@ -62,6 +62,7 @@ export const App = () => {
   }
 
   const clearItems = () => {
+    showAlert("All values deleted from the list", "danger", true);
     setItems([]);
   }
   
