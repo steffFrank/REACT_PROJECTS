@@ -1,14 +1,19 @@
 import React from "react";
 
 
-export const Form = ({maxLength}) => {
+export const Form = ({maxLength, generateLorem, showResult}) => {
+
+
     return (
-        <div className="lorem-form">
+        <form className="lorem-form" onSubmit={(e) => showResult(e)}>
             <label htmlFor="numLorem">paragraphs:</label>
             <input name="numLorem" 
                    min ="1" type="number" 
-                   max={maxLength} />
-            <button className="btn">generate</button>
-        </div>
+                   max={maxLength}
+                   onChange={(e) => generateLorem(e)}
+                   autoFocus
+                   required/>
+            <button type="submit" className="btn">generate</button>
+        </form>
     )
 }
