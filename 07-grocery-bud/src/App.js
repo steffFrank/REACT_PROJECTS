@@ -9,6 +9,8 @@ export const App = () => {
   const [items, setItems] = useState([]);
   const [value, setValue] = useState("");
   const [alert, setAlert] = useState({msg: "", type: "", show: false})
+  const [isEdit, setIsEdit] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -16,12 +18,28 @@ export const App = () => {
 
   const addItems = (e) => {
     e.preventDefault();
-    setItems(prevItems => {
-      return [...prevItems,
-        {id:new Date().getTime(), item:value}
-      ]
-    })
-    showAlert("item added to the list", "success", true);
+    if (!value) {
+      showAlert("please enter a value", "danger", true);
+    } else if (value && isEdit) {
+      setItems(prevItems => {
+        return prevItems.map(item => {
+          if (item.id === editId) {
+            showAlert("value changed", "success", true);
+            setEditId(null);
+            setIsEdit(false);
+            return {...item, item:value};
+          }
+          return item;
+        })
+      })
+    } else {
+      setItems(prevItems => {
+        showAlert(`${value} added in the list`, "success", true);
+        return [...prevItems,
+          {id: new Date().getTime(), item: value}
+        ]
+      })
+    }
     setValue("");
   }
 
@@ -42,6 +60,12 @@ export const App = () => {
     setAlert({msg, type, show});
   }
 
+  const editItem = (item) => {
+    setEditId(item.id)
+    setValue(item.item);
+    setIsEdit(true);
+  }
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       showAlert("", "", false);
@@ -56,12 +80,13 @@ export const App = () => {
         <h3>grocery bud</h3>
         <Form addItems={addItems}
               handleChange={handleChange}
-              value={value}/>
+              value={value}
+              isEdit={isEdit}/>
         <List items={items}
               clearItems={clearItems}
-              deleteItem={deleteItem}/>
+              deleteItem={deleteItem}
+              editItem={editItem}/>
       </div>
-     
     </div>
   )
 }
