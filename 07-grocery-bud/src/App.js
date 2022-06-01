@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { List } from "./List";
 import { Alert } from "./Alert";
 import { Form } from "./Form";
@@ -41,6 +41,13 @@ export const App = () => {
   const showAlert = (msg="", type="danger", show=true) => {
     setAlert({msg, type, show});
   }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      showAlert("", "", false);
+    }, 2000);
+    return () => clearTimeout(timeout);
+  })
 
   return (
     <div className="section-center">
