@@ -4,13 +4,7 @@ import { Alert } from "./Alert";
 import { Form } from "./Form";
 
 const getLocalData = () => {
-  const list = JSON.parse(localStorage.getItem("listItems"));
-  console.log(list);
-  if (list) {
-    return list;
-  } else {
-    return [];
-  }
+  return JSON.parse(localStorage.getItem("listItems"));
 }
 
 export const App = () => {
@@ -86,6 +80,7 @@ export const App = () => {
   useEffect(() => {
     localStorage.setItem("listItems", JSON.stringify(items));
   }, [items])
+
 
   return (
     <div className="section-center">
