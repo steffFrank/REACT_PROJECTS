@@ -3,10 +3,19 @@ import { List } from "./List";
 import { Alert } from "./Alert";
 import { Form } from "./Form";
 
+const getLocalData = () => {
+  const list = JSON.parse(localStorage.getItem("listItems"));
+  console.log(list);
+  if (list) {
+    return list;
+  } else {
+    return [];
+  }
+}
 
 export const App = () => {
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(getLocalData());
   const [value, setValue] = useState("");
   const [alert, setAlert] = useState({msg: "", type: "", show: false})
   const [isEdit, setIsEdit] = useState(false);
@@ -72,6 +81,10 @@ export const App = () => {
     }, 2000);
     return () => clearTimeout(timeout);
   })
+
+  useEffect(() => {
+    localStorage.setItem("listItems", JSON.stringify(items));
+  }, [items])
 
   return (
     <div className="section-center">
