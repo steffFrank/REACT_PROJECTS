@@ -8,7 +8,7 @@ export const List = ({items}) => {
       {items.map(item => {
         return (
           <div key={item.id} className="grocery-item">
-            <p className="title">{item.name}</p>
+            <p className="title">{item.item}</p>
             <button className="edit-btn"><FaEdit /></button>
             <button className="delete-btn"><FaTrash /></button>
           </div>
