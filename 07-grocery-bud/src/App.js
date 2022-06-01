@@ -21,13 +21,17 @@ export const App = () => {
         {id:new Date().getTime(), item:value}
       ]
     })
+    showAlert("item added to the list", "success", true);
     setValue("");
   }
 
   const deleteItem = (id) => {
     setItems(prevItems => {
+      const deletedItem = items.find(item => item.id === id).item;
+      showAlert(`${deletedItem} deleted from the list`);
       return prevItems.filter(item => item.id !== id);
     })
+    
   }
 
   const clearItems = () => {
