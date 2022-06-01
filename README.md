@@ -4,3 +4,4 @@
 - 03-reviews
 - 04-menu
 - 05-slider
+- 06-lorem-generator
