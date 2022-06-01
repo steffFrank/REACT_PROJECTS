@@ -22,7 +22,11 @@ export const App = () => {
     })
     setValue("");
   }
-  console.log(items);
+
+  const clearItems = () => {
+    setItems([]);
+  }
+  
   return (
     <div className="section-center">
       <div className="grocery-form">
@@ -31,7 +35,8 @@ export const App = () => {
         <Form addItems={addItems}
               handleChange={handleChange}
               value={value}/>
-        <List items={items}/>
+        <List items={items}
+              clearItems={clearItems}/>
       </div>
      
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 
 
-export const List = ({items}) => {
+export const List = ({items, clearItems}) => {
   return (
     <article className="grocery-container">
       {items.map(item => {
@@ -16,7 +16,7 @@ export const List = ({items}) => {
           </div>
         )
       })}
-      <button className="clear-btn">clear items</button>
+      <button onClick={clearItems} className="clear-btn">clear items</button>
     </article>
   )
 }
