@@ -16,7 +16,7 @@ export const List = ({items, clearItems}) => {
           </div>
         )
       })}
-      <button onClick={clearItems} className="clear-btn">clear items</button>
+      {items.length > 0 && <button onClick={clearItems} className="clear-btn">clear items</button>}
     </article>
   )
 }
