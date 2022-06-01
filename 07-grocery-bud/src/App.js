@@ -20,6 +20,7 @@ export const App = () => {
         {id:new Date().getTime(), item:value}
       ]
     })
+    setValue("");
   }
   console.log(items);
   return (
@@ -28,7 +29,8 @@ export const App = () => {
         <Alert />
         <h3>grocery bud</h3>
         <Form addItems={addItems}
-              handleChange={handleChange}/>
+              handleChange={handleChange}
+              value={value}/>
         <List items={items}/>
       </div>
      
