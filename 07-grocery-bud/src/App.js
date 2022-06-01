@@ -8,6 +8,7 @@ export const App = () => {
 
   const [items, setItems] = useState([]);
   const [value, setValue] = useState("");
+  const [alert, setAlert] = useState({msg: "", type: "", show: false})
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -33,10 +34,14 @@ export const App = () => {
     setItems([]);
   }
   
+  const showAlert = (msg="", type="danger", show=true) => {
+    setAlert({msg, type, show});
+  }
+
   return (
     <div className="section-center">
       <div className="grocery-form">
-        <Alert />
+        <Alert {...alert}/>
         <h3>grocery bud</h3>
         <Form addItems={addItems}
               handleChange={handleChange}
