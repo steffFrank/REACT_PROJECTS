@@ -3,6 +3,9 @@ import React from "react";
 
 export const Form = () => {
     return (
-        <h3>Form Component</h3>
+        <form className="form-control">
+            <input className="grocery" type="text" placeholder="e.g eggs" />
+            <button className="submit-btn">submit</button>
+        </form>
     )
 }
