@@ -5,3 +5,4 @@
 - 04-menu
 - 05-slider
 - 06-lorem-generator
+- 07-grocery-bud
