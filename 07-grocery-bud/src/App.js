@@ -104,18 +104,19 @@ export const App = () => {
 
 
   return (
+      
     <div className="section-center">
+      <Alert {...alert}/>
       <div className="grocery-form">
-        <Alert {...alert}/>
         <h3>grocery bud</h3>
         <Form addItems={addItems}
-              handleChange={handleChange}
-              value={value}
-              isEdit={isEdit}/>
-        <List items={items}
-              clearItems={clearItems}
-              deleteItem={deleteItem}
-              editItem={editItem}/>
+          handleChange={handleChange}
+          value={value}
+          isEdit={isEdit}/>
+          <List items={items}
+            clearItems={clearItems}
+            deleteItem={deleteItem}
+            editItem={editItem}/>
       </div>
     </div>
   )

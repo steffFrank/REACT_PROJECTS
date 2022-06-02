@@ -3,8 +3,8 @@ import React from "react";
 
 export const Alert = ({msg, type, show}) => {
   return (
-    show && <div className="alert">
-      <p className={`alert-${type}`}>{msg}</p>
+    <div className="alert">
+      {show && <p className={`alert-${type}`}>{msg}</p>}
     </div>
   )
 }
