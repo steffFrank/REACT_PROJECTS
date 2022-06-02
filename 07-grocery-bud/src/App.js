@@ -4,7 +4,12 @@ import { Alert } from "./Alert";
 import { Form } from "./Form";
 
 const getLocalData = () => {
-  return JSON.parse(localStorage.getItem("listItems"));
+  const list = localStorage.getItem("listItems");
+  if (list) {
+    return JSON.parse(list);
+  } else {
+    return [];
+  }
 }
 
 export const App = () => {
