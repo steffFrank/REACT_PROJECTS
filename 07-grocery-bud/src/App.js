@@ -17,13 +17,19 @@ export const App = () => {
 
   const handleChange = (e) => {
     setValue(e.target.value);
+    
   }
 
   const addItems = (e) => {
     e.preventDefault();
+
+    if (checkValue(value)) {
+      return;
+    }
     if (!value) {
       showAlert("please enter a value", "danger", true);
     } else if (value && isEdit) {
+      
       setItems(prevItems => {
         return prevItems.map(item => {
           if (item.id === editId) {
@@ -45,6 +51,7 @@ export const App = () => {
     }
     setValue("");
   }
+
 
   const deleteItem = (id) => {
     setItems(prevItems => {
@@ -68,6 +75,20 @@ export const App = () => {
     setEditId(item.id)
     setValue(item.item);
     setIsEdit(true);
+  }
+
+  const checkValue = val => {
+    const checkedVal = items.find(item => item.item.toLowerCase() === val.toLowerCase());
+    if (checkedVal) {
+      if (isEdit) {
+        setIsEdit(false);
+        setEditId(null);
+      }
+      showAlert(`${value} already in the list`, "danger", true);
+      setValue("");
+      return true;
+    }
+    return false;
   }
 
   useEffect(() => {
