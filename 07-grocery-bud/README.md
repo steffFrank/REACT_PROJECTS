@@ -2,4 +2,4 @@
 
 
 How it looks like
-[grocery-bud](https://react-projects-10-grocery-bud.netlify.app/)
+[grocery-bud](https://save-grocery-items.netlify.app/)
